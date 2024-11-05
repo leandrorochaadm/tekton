@@ -59,6 +59,8 @@ const scrollToContact = () => {
 </script>
 
 <style scoped lang="scss">
+@use "sass:color";
+
 /* Variáveis de Cores */
 $primary-blue: #1a469d;
 $light-blue: #e0e9f5;
@@ -101,7 +103,7 @@ $gray: #666666;
       outline: none;
 
       &:hover, &:focus {
-        background-color: darken($white, 10%);
+        background-color: color.mix(black, $white, 90%); // Darkens white by 10%
         transform: scale(1.05);
       }
     }
@@ -199,7 +201,7 @@ $gray: #666666;
         outline: none;
 
         &:hover, &:focus {
-          background-color: darken($white, 10%);
+          background-color: color.mix(black, $white, 90%); // Darkens white by 10%
           transform: scale(1.05);
         }
       }
