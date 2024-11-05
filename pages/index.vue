@@ -4,7 +4,7 @@
     <header class="home__header">
       <h1>Bem-vindo à Tekton Softwares</h1>
       <p>Inovação e precisão em soluções de software para pequenas empresas.</p>
-      <button @click="handleContact" class="home__cta-button">Fale Conosco</button>
+      <button @click="scrollToContact" class="home__cta-button">Fale Conosco</button>
     </header>
 
     <!-- Seção de Serviços -->
@@ -27,50 +27,24 @@
     </section>
 
     <!-- Seção de Contato -->
+    <section class="home__contact" ref="contactSection">
+      <h2>Entre em Contato</h2>
+      <p>Estamos prontos para ajudar a transformar seu negócio. Preencha o formulário abaixo para iniciar a
+        conversa.</p>
+      <form class="home__contact-form">
+        <input type="text" placeholder="Seu Nome" required/>
+        <input type="email" placeholder="Seu Email" required/>
+        <textarea placeholder="Sua Mensagem" rows="4" required></textarea>
+        <button type="submit" class="home__cta-button">Enviar</button>
+      </form>
+    </section>
+
+    <!-- Seção de Rodapé -->
     <footer class="home__footer">
       <p>&copy; 2024 Tekton Softwares. Todos os direitos reservados.</p>
     </footer>
   </div>
 </template>
-
-<script setup>
-const handleContact = () => {
-  alert("Entre em contato com a Tekton Softwares para mais informações.");
-};
-</script>
-
-<script>
-export default {
-  head() {
-    return {
-      title: 'Bem-vindo à Tekton Softwares',
-      script: [
-        {
-          hid: 'json-ld',
-          type: 'application/ld+json',
-          json: {
-            "@context": "http://schema.org",
-            "@type": "Organization",
-            "name": "Tekton Softwares",
-            "url": "https://tektonsoftwares.com",
-            "logo": "https://tektonsoftwares.com/logo.png",
-            "sameAs": [
-              "https://www.linkedin.com/company/tekton-softwares",
-              "https://twitter.com/tekton_softwares"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+55-11-99999-9999",
-              "contactType": "Customer Service"
-            }
-          }
-        }
-      ]
-    }
-  }
-
-}
-</script>
 
 
 <style scoped lang="scss">
@@ -84,9 +58,12 @@ $gray: #666666;
 .home {
   font-family: Arial, sans-serif;
   color: $primary-blue;
-  text-align: center;
   background-color: $light-blue;
   padding: 20px;
+  text-align: center;
+
+  /* Animação para fade-in ao carregar */
+  animation: fadeIn 1s ease-in-out;
 
   &__header {
     padding: 50px 0;
@@ -142,6 +119,7 @@ $gray: #666666;
         max-width: 300px;
         text-align: left;
         transition: transform 0.3s;
+        cursor: pointer;
 
         &:hover {
           transform: translateY(-5px);
@@ -161,6 +139,51 @@ $gray: #666666;
     }
   }
 
+  &__contact {
+    padding: 50px 20px;
+    background-color: $primary-blue;
+    color: $white;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    .home__contact-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+
+      input, textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .home__cta-button {
+        background-color: $white;
+        color: $primary-blue;
+        font-size: 1rem;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($white, 10%);
+        }
+      }
+    }
+  }
+
   &__footer {
     margin-top: 40px;
     padding: 20px;
@@ -172,4 +195,72 @@ $gray: #666666;
     }
   }
 }
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .home__services-list {
+    flex-direction: column;
+  }
+
+  .home__header h1 {
+    font-size: 2rem;
+  }
+
+  .home__services-list .service-card {
+    max-width: 100%;
+  }
+}
 </style>
+
+<script setup>
+import {ref} from 'vue'
+
+const contactSection = ref(null)
+
+const scrollToContact = () => {
+  contactSection.value.scrollIntoView({behavior: 'smooth'})
+}
+</script>
+
+<script>
+export default {
+  head() {
+    return {
+      title: 'Bem-vindo à Tekton Softwares',
+      script: [
+        {
+          hid: 'json-ld',
+          type: 'application/ld+json',
+          json: {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "Tekton Softwares",
+            "url": "https://tektonsoftwares.com",
+            "logo": "https://tektonsoftwares.com/logo.png",
+            "sameAs": [
+              "https://www.linkedin.com/company/tekton-softwares",
+              "https://twitter.com/tekton_softwares"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+55-11-99999-9999",
+              "contactType": "Customer Service"
+            }
+          }
+        }
+      ]
+    }
+  }
+
+}
+</script>
