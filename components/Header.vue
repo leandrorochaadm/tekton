@@ -1,26 +1,43 @@
 <template>
-  <header>
-    <h1>Tekton</h1>
-    <nav>
-      <NuxtLink to="/public">Home</NuxtLink>
-      <NuxtLink to="/about">Sobre</NuxtLink>
-      <NuxtLink to="/services">Serviços</NuxtLink>
-      <NuxtLink to="/contact">Contato</NuxtLink>
+  <header class="header">
+    <h1>Tekton Softwares</h1>
+    <nav class="navigation">
+      <NuxtLink to="/" class="nav-link">Home</NuxtLink>
+      <NuxtLink to="/about" class="nav-link">Sobre</NuxtLink>
+      <NuxtLink to="/services" class="nav-link">Serviços</NuxtLink>
+      <NuxtLink to="/contact" class="nav-link">Contatos</NuxtLink>
     </nav>
   </header>
 </template>
 
+<script>
+export default {};
+</script>
+
 <style scoped>
-header {
+.header {
+  background-color: #1a469d;
+  color: white;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-  background-color: #1a469d;
-  color: #fff;
+  align-items: center;
 }
-nav a {
-  margin-left: 20px;
-  color: #fff;
+
+.navigation {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: white;
   text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0f3569;
+  }
 }
 </style>

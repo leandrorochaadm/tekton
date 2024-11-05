@@ -4,42 +4,28 @@
     <header class="home__header">
       <h1>Bem-vindo à Tekton Softwares</h1>
       <p>Inovação e precisão em soluções de software para pequenas empresas.</p>
-      <button @click="scrollToContact" class="home__cta-button" aria-label="Fale Conosco">
-        Fale Conosco
-      </button>
+
     </header>
 
-    <!-- Seção de Serviços -->
+    <!-- Seção de botões -->
     <section class="home__services">
       <h2>Nossos Serviços</h2>
       <div class="home__services-list">
-        <div class="service-card" tabindex="0" aria-label="Desenvolvimento Mobile">
-          <h3>Desenvolvimento Mobile</h3>
+        <NuxtLink to="/services" class="service-card" tabindex="0" aria-label="Desenvolvimento Mobile">
+          <h3>Serviços</h3>
           <p>Soluções sob medida para dispositivos móveis, adaptadas às necessidades do seu negócio.</p>
-        </div>
-        <div class="service-card" tabindex="0" aria-label="Desenvolvimento Web">
-          <h3>Desenvolvimento Web</h3>
+        </NuxtLink>
+        <NuxtLink to="/contact" class="service-card" tabindex="0" aria-label="Desenvolvimento Web">
+          <h3>Contatos</h3>
           <p>Sites e plataformas de alta performance, projetados para crescer com seu negócio.</p>
-        </div>
-        <div class="service-card" tabindex="0" aria-label="Consultoria em Software">
-          <h3>Consultoria em Software</h3>
+        </NuxtLink>
+        <NuxtLink to="/about" class="service-card" tabindex="0" aria-label="Consultoria em Software">
+          <h3>Sobre</h3>
           <p>Auxiliamos na transformação digital da sua empresa com nossa experiência e expertise.</p>
-        </div>
+        </NuxtLink>
       </div>
     </section>
 
-    <!-- Seção de Contato -->
-    <section class="home__contact" ref="contactSection">
-      <h2>Entre em Contato</h2>
-      <p>Estamos prontos para ajudar a transformar seu negócio. Preencha o formulário abaixo para iniciar a
-        conversa.</p>
-      <form class="home__contact-form" aria-label="Formulário de Contato">
-        <input type="text" placeholder="Seu Nome" required aria-label="Nome"/>
-        <input type="email" placeholder="Seu Email" required aria-label="Email"/>
-        <textarea placeholder="Sua Mensagem" rows="4" required aria-label="Mensagem"></textarea>
-        <button type="submit" class="home__cta-button" aria-label="Enviar Mensagem">Enviar</button>
-      </form>
-    </section>
 
     <!-- Seção de Rodapé -->
     <footer class="home__footer">
