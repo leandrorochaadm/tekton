@@ -4,22 +4,24 @@
     <header class="home__header">
       <h1>Bem-vindo à Tekton Softwares</h1>
       <p>Inovação e precisão em soluções de software para pequenas empresas.</p>
-      <button @click="scrollToContact" class="home__cta-button">Fale Conosco</button>
+      <button @click="scrollToContact" class="home__cta-button" aria-label="Fale Conosco">
+        Fale Conosco
+      </button>
     </header>
 
     <!-- Seção de Serviços -->
     <section class="home__services">
       <h2>Nossos Serviços</h2>
       <div class="home__services-list">
-        <div class="service-card">
+        <div class="service-card" tabindex="0" aria-label="Desenvolvimento Mobile">
           <h3>Desenvolvimento Mobile</h3>
           <p>Soluções sob medida para dispositivos móveis, adaptadas às necessidades do seu negócio.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" tabindex="0" aria-label="Desenvolvimento Web">
           <h3>Desenvolvimento Web</h3>
           <p>Sites e plataformas de alta performance, projetados para crescer com seu negócio.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" tabindex="0" aria-label="Consultoria em Software">
           <h3>Consultoria em Software</h3>
           <p>Auxiliamos na transformação digital da sua empresa com nossa experiência e expertise.</p>
         </div>
@@ -31,11 +33,11 @@
       <h2>Entre em Contato</h2>
       <p>Estamos prontos para ajudar a transformar seu negócio. Preencha o formulário abaixo para iniciar a
         conversa.</p>
-      <form class="home__contact-form">
-        <input type="text" placeholder="Seu Nome" required/>
-        <input type="email" placeholder="Seu Email" required/>
-        <textarea placeholder="Sua Mensagem" rows="4" required></textarea>
-        <button type="submit" class="home__cta-button">Enviar</button>
+      <form class="home__contact-form" aria-label="Formulário de Contato">
+        <input type="text" placeholder="Seu Nome" required aria-label="Nome"/>
+        <input type="email" placeholder="Seu Email" required aria-label="Email"/>
+        <textarea placeholder="Sua Mensagem" rows="4" required aria-label="Mensagem"></textarea>
+        <button type="submit" class="home__cta-button" aria-label="Enviar Mensagem">Enviar</button>
       </form>
     </section>
 
@@ -46,6 +48,15 @@
   </div>
 </template>
 
+<script setup>
+import {ref} from 'vue'
+
+const contactSection = ref(null)
+
+const scrollToContact = () => {
+  contactSection.value.scrollIntoView({behavior: 'smooth'})
+}
+</script>
 
 <style scoped lang="scss">
 /* Variáveis de Cores */
@@ -61,8 +72,6 @@ $gray: #666666;
   background-color: $light-blue;
   padding: 20px;
   text-align: center;
-
-  /* Animação para fade-in ao carregar */
   animation: fadeIn 1s ease-in-out;
 
   &__header {
@@ -88,10 +97,12 @@ $gray: #666666;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
+      outline: none;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: darken($white, 10%);
+        transform: scale(1.05);
       }
     }
   }
@@ -120,9 +131,11 @@ $gray: #666666;
         text-align: left;
         transition: transform 0.3s;
         cursor: pointer;
+        outline: none;
 
-        &:hover {
+        &:hover, &:focus {
           transform: translateY(-5px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         h3 {
@@ -167,6 +180,12 @@ $gray: #666666;
         border-radius: 5px;
         border: none;
         font-size: 1rem;
+        outline: none;
+        transition: box-shadow 0.3s;
+
+        &:focus {
+          box-shadow: 0 0 5px rgba(26, 70, 157, 0.5);
+        }
       }
 
       .home__cta-button {
@@ -176,9 +195,12 @@ $gray: #666666;
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        outline: none;
 
-        &:hover {
+        &:hover, &:focus {
           background-color: darken($white, 10%);
+          transform: scale(1.05);
         }
       }
     }
@@ -221,16 +243,6 @@ $gray: #666666;
   }
 }
 </style>
-
-<script setup>
-import {ref} from 'vue'
-
-const contactSection = ref(null)
-
-const scrollToContact = () => {
-  contactSection.value.scrollIntoView({behavior: 'smooth'})
-}
-</script>
 
 <script>
 export default {
