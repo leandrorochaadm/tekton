@@ -1,0 +1,1 @@
+import{_ as a,c as n,a as o,o as s}from"./RiOoRhR1.js";const c={__name:"404",setup(t){return(r,e)=>(s(),n("section",null,e[0]||(e[0]=[o("h1",null,"Página Não Encontrada",-1),o("p",null,"Desculpe, mas não conseguimos encontrar a página que você procura.",-1)])))}},_=a(c,[["__scopeId","data-v-81f87dfc"]]);export{_ as default};
